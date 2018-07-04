@@ -14,6 +14,9 @@ class RecordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.layer.borderWidth = 2
+        self.tableView.layer.borderColor = UIColor.black.cgColor
+        self.tableView.layer.cornerRadius = 10
     }
     
     @IBAction func touchUpExitButton(_ sender: UIButton) {
@@ -27,13 +30,13 @@ extension RecordViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 2
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "왼쪽" : "오른쪽"
+        return section == 0 ? "좌측" : "우측"
     }
 }
 extension RecordViewController: UITableViewDelegate {

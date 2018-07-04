@@ -28,8 +28,8 @@ class GameViewController: UIViewController {
         }
     }
     var count: Int = 0 {
-        didSet {
-            if oldValue == 10 {
+        willSet {
+            if newValue == 10 {
                 self.presentAlertController()
             }
         }
@@ -50,9 +50,20 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let buttons = [northButton, northeastButton, eastButton, southeastButton, southButton, southwestButton, westButton, northwestButton]
+        var count: CGFloat = 0
         for button in buttons {
+            button?.transform = button?.transform.rotated(by: CGFloat.pi / 4 * count) ?? CGAffineTransform()
+            count += 1
             button?.addTarget(self, action: #selector(touchUpButton(_:)), for: .touchUpInside)
         }
+    }
+    
+    func initializeGame() {
+        self.imageView.transform = self.imageView.transform.rotated(by: 0)
+        let random = CGFloat(arc4random_uniform(8))
+        print(random)
+        let degree = CGFloat.pi / 4 * random
+        self.imageView.transform = self.imageView.transform.rotated(by: degree)
     }
     
     func presentAlertController() {
@@ -88,5 +99,6 @@ class GameViewController: UIViewController {
         default:
             arrowPosition = .none
         }
+        initializeGame()
     }
 }
