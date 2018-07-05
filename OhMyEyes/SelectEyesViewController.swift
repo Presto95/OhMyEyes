@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum EyePosition {
-    case left
-    case right
-}
-
 class SelectEyesViewController: UIViewController {
 
     @IBOutlet weak var leftButton: UIButton!
@@ -25,8 +20,8 @@ class SelectEyesViewController: UIViewController {
     }
     
     @objc func touchUpButton(_ sender: UIButton) {
-        guard let next = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else { return }
-        next.eyePosition = sender.tag == 0 ? .left : .right
+        guard let next = storyboard?.instantiateViewController(withIdentifier: "InputHeightViewController") else { return }
+        UserInformation.shared.eyePosition = sender.tag == 0 ? .left : .right
         self.present(next, animated: false, completion: nil)
     }
 }

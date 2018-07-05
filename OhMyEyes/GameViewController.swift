@@ -10,10 +10,11 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    var eyePosition: EyePosition?
     var count: Int = 0 {
         willSet {
             if newValue == 10 {
+                self.timer?.invalidate()
+                self.timer = nil
                 self.presentAlertController()
             }
         }
@@ -45,11 +46,15 @@ class GameViewController: UIViewController {
             count += 1
             button?.addTarget(self, action: #selector(touchUpButton(_:)), for: .touchUpInside)
         }
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         self.initializeGame()
     }
     
     func initializeGame() {
+        self.second = 3
+        self.timerLabel.text = "\(self.second)"
+        self.timer?.invalidate()
+        self.timer = nil
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         let initialDegree = CGFloat.pi / 4 * CGFloat(8 - self.randomNumber)
         self.imageView.transform = self.imageView.transform.rotated(by: initialDegree)
         let random = CGFloat(arc4random_uniform(8))
@@ -64,19 +69,25 @@ class GameViewController: UIViewController {
         let alert = UIAlertController(title: "결과", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { _ in
             print("결과 코어데이터에 저장하고 메인으로 돌아가기")
+            self.initializeUserInformation()
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
     
+    func initializeUserInformation() {
+        let userInfo = UserInformation.shared
+        userInfo.eyePosition = nil
+        userInfo.height = nil
+    }
+    
     @objc func countDown() {
         self.second -= 1
         if self.second == 0 {
-            self.count += 1
             self.incorrectCount += 1
-            self.second = 3
             self.initializeGame()
+            self.count += 1
         }
         self.timerLabel.text = "\(self.second)"
     }
@@ -87,7 +98,7 @@ class GameViewController: UIViewController {
         } else {
             self.incorrectCount += 1
         }
-        self.count += 1
         self.initializeGame()
+        self.count += 1
     }
 }

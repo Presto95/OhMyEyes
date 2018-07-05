@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    var isAppeared: Bool = true
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var leftImageView: UIImageView!
@@ -19,9 +20,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)
         self.recordButton.addTarget(self, action: #selector(touchUpRecordButton(_:)), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.isAppeared = true
         self.rotateImageView(imageView: leftImageView, duration: 2)
         self.rotateImageView(imageView: rightImageView, duration: 2)
-      
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isAppeared = false
     }
     
     func rotateImageView(imageView: UIImageView, duration: TimeInterval) {
@@ -34,7 +44,9 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear, animations: {
             imageView.transform = imageView.transform.rotated(by: degree)
         }) { _ in
-           self.rotateImageView(imageView: imageView, duration: 2)
+            if self.isAppeared {
+                self.rotateImageView(imageView: imageView, duration: 2)
+            }
         }
     }
     
