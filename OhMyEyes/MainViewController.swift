@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     }
     
     func rotateImageView(imageView: UIImageView, duration: TimeInterval) {
-        var degree: CGFloat = .infinity
+        var degree: CGFloat
         if imageView.tag == 0 {
             degree = CGFloat.pi
         } else {
@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear, animations: {
             imageView.transform = imageView.transform.rotated(by: degree)
         }) { _ in
-            self.rotateImageView(imageView: imageView, duration: duration)
+           self.rotateImageView(imageView: imageView, duration: 2)
         }
     }
     

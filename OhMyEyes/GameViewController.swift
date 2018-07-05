@@ -8,25 +8,9 @@
 
 import UIKit
 
-enum ArrowPosition {
-    case north
-    case northeast
-    case east
-    case southeast
-    case south
-    case southwest
-    case west
-    case northwest
-    case none
-}
-
 class GameViewController: UIViewController {
 
-    var eyePosition: EyePosition? {
-        didSet {
-            print(eyePosition ?? "error")
-        }
-    }
+    var eyePosition: EyePosition?
     var count: Int = 0 {
         willSet {
             if newValue == 10 {
@@ -34,8 +18,12 @@ class GameViewController: UIViewController {
             }
         }
     }
-    var value: Float = 0
+    var correctCount: Int = 0
+    var incorrectCount: Int = 0
+    var eyesight: Float = 0
     var timer: Timer?
+    var second: Int = 3
+    var randomNumber: Int = 0
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var northButton: UIButton!
@@ -46,6 +34,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var southwestButton: UIButton!
     @IBOutlet weak var westButton: UIButton!
     @IBOutlet weak var northwestButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,18 +45,23 @@ class GameViewController: UIViewController {
             count += 1
             button?.addTarget(self, action: #selector(touchUpButton(_:)), for: .touchUpInside)
         }
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        self.initializeGame()
     }
     
     func initializeGame() {
-        self.imageView.transform = self.imageView.transform.rotated(by: 0)
+        let initialDegree = CGFloat.pi / 4 * CGFloat(8 - self.randomNumber)
+        self.imageView.transform = self.imageView.transform.rotated(by: initialDegree)
         let random = CGFloat(arc4random_uniform(8))
-        print(random)
+        self.randomNumber = Int(random)
+        print(randomNumber)
         let degree = CGFloat.pi / 4 * random
         self.imageView.transform = self.imageView.transform.rotated(by: degree)
     }
     
     func presentAlertController() {
-        let alert = UIAlertController(title: "결과", message: "시력 : ?", preferredStyle: .alert)
+        let message = "맞은 횟수 : \(correctCount)"
+        let alert = UIAlertController(title: "결과", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { _ in
             print("결과 코어데이터에 저장하고 메인으로 돌아가기")
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -76,29 +70,24 @@ class GameViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func touchUpButton(_ sender: UIButton) {
-        self.count += 1
-        var arrowPosition: ArrowPosition = .none
-        switch sender.tag {
-        case 0:
-            arrowPosition = .north
-        case 1:
-            arrowPosition = .northeast
-        case 2:
-            arrowPosition = .east
-        case 3:
-            arrowPosition = .southeast
-        case 4:
-            arrowPosition = .south
-        case 5:
-            arrowPosition = .southwest
-        case 6:
-            arrowPosition = .west
-        case 7:
-            arrowPosition = .southwest
-        default:
-            arrowPosition = .none
+    @objc func countDown() {
+        self.second -= 1
+        if self.second == 0 {
+            self.count += 1
+            self.incorrectCount += 1
+            self.second = 3
+            self.initializeGame()
         }
-        initializeGame()
+        self.timerLabel.text = "\(self.second)"
+    }
+    
+    @objc func touchUpButton(_ sender: UIButton) {
+        if sender.tag == self.randomNumber {
+            self.correctCount += 1
+        } else {
+            self.incorrectCount += 1
+        }
+        self.count += 1
+        self.initializeGame()
     }
 }

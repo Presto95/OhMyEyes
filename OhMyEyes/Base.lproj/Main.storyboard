@@ -294,12 +294,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landoltC" translatesAutoresizingMaskIntoConstraints="NO" id="isP-js-uLM">
-                                <rect key="frame" x="284" y="138" width="100" height="100"/>
+                                <rect key="frame" x="308.5" y="162.5" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="8xP-Sa-ilW"/>
-                                    <constraint firstAttribute="width" constant="100" id="YMN-wt-EOa"/>
+                                    <constraint firstAttribute="height" constant="50" id="8xP-Sa-ilW"/>
+                                    <constraint firstAttribute="width" constant="50" id="YMN-wt-EOa"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrD-1U-WkR">
+                                <rect key="frame" x="328.5" y="84" width="10" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -308,7 +314,9 @@
                             <constraint firstItem="iGU-aM-ZXg" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="2EI-HF-hdn"/>
                             <constraint firstItem="usl-Fo-ihK" firstAttribute="leading" secondItem="EXH-AM-be3" secondAttribute="leading" constant="20" id="3T0-fN-cUA"/>
                             <constraint firstItem="POg-f2-Erk" firstAttribute="top" secondItem="EXH-AM-be3" secondAttribute="top" constant="20" id="6ME-4o-Cch"/>
+                            <constraint firstItem="SrD-1U-WkR" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="8zM-MK-Vd3"/>
                             <constraint firstItem="iGU-aM-ZXg" firstAttribute="top" secondItem="EXH-AM-be3" secondAttribute="top" constant="20" id="BOd-5h-81u"/>
+                            <constraint firstItem="SrD-1U-WkR" firstAttribute="top" secondItem="EUz-f1-HA0" secondAttribute="bottom" constant="8" id="HKp-lg-KDM"/>
                             <constraint firstItem="EUz-f1-HA0" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="L0i-E9-yUY"/>
                             <constraint firstItem="EXH-AM-be3" firstAttribute="trailing" secondItem="8e9-nG-ipC" secondAttribute="trailing" constant="20" id="Lfy-bq-o0H"/>
                             <constraint firstItem="hKw-4g-1FW" firstAttribute="centerY" secondItem="flE-BM-dOZ" secondAttribute="centerY" id="M8Z-JF-Cuh"/>
@@ -335,6 +343,7 @@
                         <outlet property="southButton" destination="2UF-1D-rcr" id="Xxx-2a-nn5"/>
                         <outlet property="southeastButton" destination="8e9-nG-ipC" id="pSg-WB-ZEK"/>
                         <outlet property="southwestButton" destination="usl-Fo-ihK" id="DMf-cd-MDu"/>
+                        <outlet property="timerLabel" destination="SrD-1U-WkR" id="ArL-sG-5QZ"/>
                         <outlet property="westButton" destination="EXe-UJ-3Xm" id="LMf-yN-TGj"/>
                     </connections>
                 </viewController>
@@ -345,7 +354,7 @@
         <!--View Controller-->
         <scene sceneID="lfh-3E-SIE">
             <objects>
-                <viewController id="POo-8y-sQd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WarningViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="POo-8y-sQd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UG7-h8-Q9k">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
