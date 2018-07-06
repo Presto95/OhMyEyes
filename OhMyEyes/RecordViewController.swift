@@ -36,7 +36,7 @@ extension RecordViewController: UITableViewDataSource {
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "좌측" : "우측"
+        return section == 0 ? "LEFT" : "RIGHT"
     }
 }
 extension RecordViewController: UITableViewDelegate {

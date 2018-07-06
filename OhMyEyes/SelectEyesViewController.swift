@@ -20,7 +20,7 @@ class SelectEyesViewController: UIViewController {
     }
     
     @objc func touchUpButton(_ sender: UIButton) {
-        guard let next = storyboard?.instantiateViewController(withIdentifier: "InputHeightViewController") else { return }
+        guard let next = storyboard?.instantiateViewController(withIdentifier: "WarningViewController") else { return }
         UserInformation.shared.eyePosition = sender.tag == 0 ? .left : .right
         self.present(next, animated: false, completion: nil)
     }

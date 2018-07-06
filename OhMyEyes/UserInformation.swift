@@ -9,8 +9,4 @@
 class UserInformation {
     static let shared = UserInformation()
     var eyePosition: EyePosition?
-    var height: Int?
-    var armLength: Double {
-        return Double((height ?? 0) / 3)
-    }
 }

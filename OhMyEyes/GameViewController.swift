@@ -10,22 +10,22 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    var count: Int = 0 {
-        willSet {
-            if newValue == 10 {
-                self.timer?.invalidate()
-                self.timer = nil
-                self.presentAlertController()
-            }
-        }
-    }
-    var correctCount: Int = 0
-    var incorrectCount: Int = 0
+    var count: Int = 0
     var eyesight: Float = 0
     var timer: Timer?
     var second: Int = 3
     var randomNumber: Int = 0
+    var results = [CGFloat: Int]() {
+        didSet {
+            let filtered = results.filter { $1 == 3 }
+            if filtered.count == 1 {
+                self.finishGame(filtered.first?.key ?? 0)
+            }
+        }
+    }
     
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var northButton: UIButton!
     @IBOutlet weak var northeastButton: UIButton!
@@ -49,6 +49,12 @@ class GameViewController: UIViewController {
         self.initializeGame()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+    
     func initializeGame() {
         self.second = 3
         self.timerLabel.text = "\(self.second)"
@@ -64,28 +70,59 @@ class GameViewController: UIViewController {
         self.imageView.transform = self.imageView.transform.rotated(by: degree)
     }
     
-    func presentAlertController() {
-        let message = "맞은 횟수 : \(correctCount)"
+    func finishGame(_ minimumPoint: CGFloat) {
+        self.timer?.invalidate()
+        self.timer = nil
+        let message =
+        """
+        시행 횟수 : \(count)
+        도형의 최소 포인트 : \(minimumPoint)
+        """
         let alert = UIAlertController(title: "결과", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { _ in
             print("결과 코어데이터에 저장하고 메인으로 돌아가기")
-            self.initializeUserInformation()
+            UserInformation.shared.eyePosition = nil
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
     
-    func initializeUserInformation() {
-        let userInfo = UserInformation.shared
-        userInfo.eyePosition = nil
-        userInfo.height = nil
+    func getCorrectAnswer() {
+        let length = self.imageViewWidthConstraint.constant
+        let distance: CGFloat = {
+            if length <= 5 {
+                return 1
+            }
+            else {
+                return 5
+            }
+        }()
+        self.imageViewWidthConstraint.constant = length - distance
+        self.imageViewHeightConstraint.constant = length - distance
+        let value = self.results[length] ?? 0
+        self.results[length] = value + 1
+    }
+    
+    func getIncorrectAnswer() {
+        let length = self.imageViewWidthConstraint.constant
+        let distance: CGFloat = {
+            if length <= 5 {
+                return 1
+            }
+            else {
+                return 5
+            }
+        }()
+        self.imageViewWidthConstraint.constant = length + distance
+        self.imageViewHeightConstraint.constant = length + distance
     }
     
     @objc func countDown() {
         self.second -= 1
         if self.second == 0 {
-            self.incorrectCount += 1
+            getIncorrectAnswer()
+            self.view.layoutIfNeeded()
             self.initializeGame()
             self.count += 1
         }
@@ -94,10 +131,11 @@ class GameViewController: UIViewController {
     
     @objc func touchUpButton(_ sender: UIButton) {
         if sender.tag == self.randomNumber {
-            self.correctCount += 1
+            getCorrectAnswer()
         } else {
-            self.incorrectCount += 1
+            getIncorrectAnswer()
         }
+        self.view.layoutIfNeeded()
         self.initializeGame()
         self.count += 1
     }

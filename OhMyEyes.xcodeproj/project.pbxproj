@@ -16,7 +16,6 @@
 		193D379C20ECD2EE00407712 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193D379B20ECD2EE00407712 /* RecordViewController.swift */; };
 		193D379E20ECD2F500407712 /* SelectEyesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193D379D20ECD2F500407712 /* SelectEyesViewController.swift */; };
 		193D37A020ECD30200407712 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193D379F20ECD30200407712 /* GameViewController.swift */; };
-		19A5907920EDE521004A683E /* InputHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907820EDE521004A683E /* InputHeightViewController.swift */; };
 		19A5907B20EDE6B4004A683E /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907A20EDE6B4004A683E /* UserInformation.swift */; };
 		19A5907D20EDE7FD004A683E /* WarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907C20EDE7FD004A683E /* WarningViewController.swift */; };
 		19A5907F20EDEA52004A683E /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907E20EDEA52004A683E /* Enumeration.swift */; };
@@ -36,7 +35,6 @@
 		193D379B20ECD2EE00407712 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		193D379D20ECD2F500407712 /* SelectEyesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEyesViewController.swift; sourceTree = "<group>"; };
 		193D379F20ECD30200407712 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		19A5907820EDE521004A683E /* InputHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHeightViewController.swift; sourceTree = "<group>"; };
 		19A5907A20EDE6B4004A683E /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		19A5907C20EDE7FD004A683E /* WarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewController.swift; sourceTree = "<group>"; };
 		19A5907E20EDEA52004A683E /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				193D378620ECD0EC00407712 /* MainViewController.swift */,
 				193D379B20ECD2EE00407712 /* RecordViewController.swift */,
 				193D379D20ECD2F500407712 /* SelectEyesViewController.swift */,
-				19A5907820EDE521004A683E /* InputHeightViewController.swift */,
 				19A5907C20EDE7FD004A683E /* WarningViewController.swift */,
 				193D379F20ECD30200407712 /* GameViewController.swift */,
 				193D378E20ECD0EE00407712 /* Assets.xcassets */,
@@ -169,7 +166,6 @@
 				193D379C20ECD2EE00407712 /* RecordViewController.swift in Sources */,
 				193D37A020ECD30200407712 /* GameViewController.swift in Sources */,
 				19A5907B20EDE6B4004A683E /* UserInformation.swift in Sources */,
-				19A5907920EDE521004A683E /* InputHeightViewController.swift in Sources */,
 				193D379E20ECD2F500407712 /* SelectEyesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
