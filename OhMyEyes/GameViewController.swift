@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class GameViewController: UIViewController {
 
@@ -60,6 +61,7 @@ class GameViewController: UIViewController {
         self.timerLabel.text = "\(self.second)"
         self.timer?.invalidate()
         self.timer = nil
+        if self.presentedViewController is UIAlertController { return }
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         let initialDegree = CGFloat.pi / 4 * CGFloat(8 - self.randomNumber)
         self.imageView.transform = self.imageView.transform.rotated(by: initialDegree)
@@ -72,19 +74,32 @@ class GameViewController: UIViewController {
     func finishGame(_ minimumPoint: CGFloat) {
         self.timer?.invalidate()
         self.timer = nil
-        let message =
-        """
-        시행 횟수 : \(count)
-        도형의 최소 포인트 : \(minimumPoint)
-        """
-        let alert = UIAlertController(title: "결과", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default) { _ in
-            print("결과 코어데이터에 저장하고 메인으로 돌아가기")
+        let message = "Number of Trials".localized + " : \(count)\n" + "Minimum Point of Shape".localized + " : \(minimumPoint)"
+        let alert = UIAlertController(title: "Result".localized, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Confirm".localized, style: .default) { _ in
+            let eyePosition = UserInformation.shared.eyePosition ?? .left
+            let isLeft = eyePosition == .left ? false : true
+            self.saveCoreData(isLeft: isLeft, minimumPoint: Double(minimumPoint), trials: self.count, date: Date())
             UserInformation.shared.eyePosition = nil
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func saveCoreData(isLeft: Bool, minimumPoint: Double, trials: Int, date: Date) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let object = NSEntityDescription.insertNewObject(forEntityName: "Record", into: context)
+        object.setValue(isLeft, forKey: "position")
+        object.setValue(minimumPoint, forKey: "minimumPoint")
+        object.setValue(trials, forKey: "trials")
+        object.setValue(date, forKey: "date")
+        do {
+            try context.save()
+        } catch {
+            context.rollback()
+        }
     }
     
     func getCorrectAnswer() {
@@ -122,7 +137,6 @@ class GameViewController: UIViewController {
         if self.second == 0 {
             getIncorrectAnswer()
             self.view.layoutIfNeeded()
-            print(self.imageViewWidthConstraint.constant)
             self.initializeGame()
             self.count += 1
         }
@@ -130,14 +144,13 @@ class GameViewController: UIViewController {
     }
     
     @objc func touchUpButton(_ sender: UIButton) {
+        self.count += 1
         if sender.tag == self.randomNumber {
             getCorrectAnswer()
         } else {
             getIncorrectAnswer()
         }
         self.view.layoutIfNeeded()
-        print(self.imageViewWidthConstraint.constant)
         self.initializeGame()
-        self.count += 1
     }
 }

@@ -18,17 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh My Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0X-3d-N2R">
-                                <rect key="frame" x="225" y="164" width="217" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landoltC" translatesAutoresizingMaskIntoConstraints="NO" id="QEv-hJ-AlR">
+                                <rect key="frame" x="283" y="137" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="bn6-Pf-ifS"/>
+                                    <constraint firstAttribute="height" constant="100" id="sVL-Kv-jtw"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="M0X-3d-N2R" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mTI-S6-cnV"/>
-                            <constraint firstItem="M0X-3d-N2R" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vgA-6a-JrL"/>
+                            <constraint firstItem="QEv-hJ-AlR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ckT-nj-V4D"/>
+                            <constraint firstItem="QEv-hJ-AlR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nEi-Bj-CcI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,4 +39,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="landoltC" width="225" height="225"/>
+    </resources>
 </document>

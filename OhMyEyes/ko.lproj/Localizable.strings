@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  OhMyEyes
+
+  Created by Presto on 2018. 7. 8..
+  Copyright © 2018년 presto. All rights reserved.
+*/
+
+"Number of Trials" = "시행 횟수";
+"Minimum Point of Shape" = "도형의 최소 포인트";
+"Result" = "결과";
+"Confirm" = "확인";
+"Back" = "뒤로";

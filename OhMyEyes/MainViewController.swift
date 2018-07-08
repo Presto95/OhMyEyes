@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
     
     @objc func touchUpRecordButton(_ sender: UIButton) {
         guard let next = storyboard?.instantiateViewController(withIdentifier: "RecordViewController") else { return }
-        self.present(next, animated: true, completion: nil)
+        self.present(next, animated: false, completion: nil)
     }
 }
 
