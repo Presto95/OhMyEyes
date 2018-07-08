@@ -295,7 +295,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrD-1U-WkR">
-                                <rect key="frame" x="277.5" y="68" width="13" height="59"/>
+                                <rect key="frame" x="277.5" y="80" width="13" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -310,7 +310,6 @@
                             <constraint firstItem="POg-f2-Erk" firstAttribute="top" secondItem="EXH-AM-be3" secondAttribute="top" constant="20" id="6ME-4o-Cch"/>
                             <constraint firstItem="SrD-1U-WkR" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="8zM-MK-Vd3"/>
                             <constraint firstItem="iGU-aM-ZXg" firstAttribute="top" secondItem="EXH-AM-be3" secondAttribute="top" constant="20" id="BOd-5h-81u"/>
-                            <constraint firstItem="isP-js-uLM" firstAttribute="top" secondItem="SrD-1U-WkR" secondAttribute="bottom" constant="8" id="G1p-hh-QB1"/>
                             <constraint firstItem="EXH-AM-be3" firstAttribute="trailing" secondItem="8e9-nG-ipC" secondAttribute="trailing" constant="20" id="Lfy-bq-o0H"/>
                             <constraint firstItem="hKw-4g-1FW" firstAttribute="centerY" secondItem="flE-BM-dOZ" secondAttribute="centerY" id="M8Z-JF-Cuh"/>
                             <constraint firstItem="isP-js-uLM" firstAttribute="centerY" secondItem="flE-BM-dOZ" secondAttribute="centerY" id="NeJ-ys-gag"/>
@@ -319,7 +318,7 @@
                             <constraint firstItem="2UF-1D-rcr" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="apd-dQ-viE"/>
                             <constraint firstItem="isP-js-uLM" firstAttribute="centerX" secondItem="flE-BM-dOZ" secondAttribute="centerX" id="dUA-Cy-7Bz"/>
                             <constraint firstItem="EXH-AM-be3" firstAttribute="bottom" secondItem="8e9-nG-ipC" secondAttribute="bottom" constant="20" id="jvv-Ys-yzr"/>
-                            <constraint firstItem="SrD-1U-WkR" firstAttribute="top" secondItem="iGU-aM-ZXg" secondAttribute="bottom" constant="8" id="pZF-Wb-2Fz"/>
+                            <constraint firstItem="SrD-1U-WkR" firstAttribute="top" secondItem="iGU-aM-ZXg" secondAttribute="bottom" constant="20" id="pZF-Wb-2Fz"/>
                             <constraint firstItem="EXe-UJ-3Xm" firstAttribute="centerY" secondItem="flE-BM-dOZ" secondAttribute="centerY" id="qZN-BW-5xr"/>
                             <constraint firstItem="EXH-AM-be3" firstAttribute="trailing" secondItem="Rle-wL-uhx" secondAttribute="trailing" constant="20" id="tli-j1-yRd"/>
                             <constraint firstItem="EXH-AM-be3" firstAttribute="bottom" secondItem="2UF-1D-rcr" secondAttribute="bottom" constant="20" id="vqC-B4-Ibz"/>

@@ -65,7 +65,6 @@ class GameViewController: UIViewController {
         self.imageView.transform = self.imageView.transform.rotated(by: initialDegree)
         let random = CGFloat(arc4random_uniform(8))
         self.randomNumber = Int(random)
-        print(randomNumber)
         let degree = CGFloat.pi / 4 * random
         self.imageView.transform = self.imageView.transform.rotated(by: degree)
     }
@@ -91,7 +90,7 @@ class GameViewController: UIViewController {
     func getCorrectAnswer() {
         let length = self.imageViewWidthConstraint.constant
         let distance: CGFloat = {
-            if length <= 5 {
+            if length <= 10 {
                 return 1
             }
             else {
@@ -107,7 +106,7 @@ class GameViewController: UIViewController {
     func getIncorrectAnswer() {
         let length = self.imageViewWidthConstraint.constant
         let distance: CGFloat = {
-            if length <= 5 {
+            if length < 10 {
                 return 1
             }
             else {
@@ -123,6 +122,7 @@ class GameViewController: UIViewController {
         if self.second == 0 {
             getIncorrectAnswer()
             self.view.layoutIfNeeded()
+            print(self.imageViewWidthConstraint.constant)
             self.initializeGame()
             self.count += 1
         }
@@ -136,6 +136,7 @@ class GameViewController: UIViewController {
             getIncorrectAnswer()
         }
         self.view.layoutIfNeeded()
+        print(self.imageViewWidthConstraint.constant)
         self.initializeGame()
         self.count += 1
     }
