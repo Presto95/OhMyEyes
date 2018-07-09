@@ -20,6 +20,7 @@
 		197660FD20F1EC8800FC3298 /* RecordRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197660FC20F1EC8800FC3298 /* RecordRightCell.swift */; };
 		1976610120F2051400FC3298 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1976610320F2051400FC3298 /* Localizable.strings */; };
 		1976610520F2052600FC3298 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1976610420F2052600FC3298 /* String+.swift */; };
+		198E59C620F3193E00E63369 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 198E59C820F3193E00E63369 /* InfoPlist.strings */; };
 		19A5907B20EDE6B4004A683E /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907A20EDE6B4004A683E /* UserInformation.swift */; };
 		19A5907D20EDE7FD004A683E /* WarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907C20EDE7FD004A683E /* WarningViewController.swift */; };
 		19A5907F20EDEA52004A683E /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5907E20EDEA52004A683E /* Enumeration.swift */; };
@@ -42,6 +43,7 @@
 		197660FE20F204E400FC3298 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		1976610220F2051400FC3298 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1976610420F2052600FC3298 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		198E59C920F3196700E63369 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19A5907A20EDE6B4004A683E /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		19A5907C20EDE7FD004A683E /* WarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewController.swift; sourceTree = "<group>"; };
 		19A5907E20EDEA52004A683E /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
@@ -91,9 +93,10 @@
 				193D379D20ECD2F500407712 /* SelectEyesViewController.swift */,
 				19A5907C20EDE7FD004A683E /* WarningViewController.swift */,
 				193D379F20ECD30200407712 /* GameViewController.swift */,
-				1976610320F2051400FC3298 /* Localizable.strings */,
-				193D378E20ECD0EE00407712 /* Assets.xcassets */,
 				1976610420F2052600FC3298 /* String+.swift */,
+				1976610320F2051400FC3298 /* Localizable.strings */,
+				198E59C820F3193E00E63369 /* InfoPlist.strings */,
+				193D378E20ECD0EE00407712 /* Assets.xcassets */,
 			);
 			path = OhMyEyes;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 193D377820ECD0EC00407712;
 			productRefGroup = 193D378220ECD0EC00407712 /* Products */;
@@ -160,6 +164,7 @@
 				1976610120F2051400FC3298 /* Localizable.strings in Resources */,
 				193D378F20ECD0EE00407712 /* Assets.xcassets in Resources */,
 				193D378A20ECD0EC00407712 /* Main.storyboard in Resources */,
+				198E59C620F3193E00E63369 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +216,14 @@
 				1976610220F2051400FC3298 /* ko */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		198E59C820F3193E00E63369 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				198E59C920F3196700E63369 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
