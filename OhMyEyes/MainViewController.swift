@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class MainViewController: UIViewController {
 
@@ -20,6 +21,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)
         self.recordButton.addTarget(self, action: #selector(touchUpRecordButton(_:)), for: .touchUpInside)
+        if UserDefaults.standard.integer(forKey: "launchCount") % 4 == 0 {
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } 
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
