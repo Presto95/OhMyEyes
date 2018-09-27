@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
         for button in buttons {
             button?.transform = button?.transform.rotated(by: CGFloat.pi / 4 * count) ?? CGAffineTransform()
             count += 1
-            button?.addTarget(self, action: #selector(touchUpButton(_:)), for: .touchUpInside)
+            button?.addTarget(self, action: #selector(touchUpButton(_:)), for: .touchDown)
         }
         self.initializeGame()
     }
